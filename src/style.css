@@ -1,0 +1,92 @@
+:root {
+  --very-low-green: #8aa96a;
+  --low-green: #aebf62;
+  --moderate-yellow: #f8dd3f;
+  --high-mustard: #f2c966;
+  --very-high-orange: #e59c59;
+  --very-high-red: #a85447;
+  --slate: #718f94;
+  --green: #5b7b7a;
+  --dark: #2d3047;
+  --red: #d85461;
+  --blush: #f5efed;
+  --stone: #d9d9d9;
+  --white: #ffffff;
+  --rose: #d4b9b0;
+  --gradient: linear-gradient(180deg, var(--slate) 0%, var(--dark) 100%);
+  --base-size: 1rem;
+  --scale: 1.25;
+  --h6: calc(var(--base-size) * var(--scale));
+  --h5: calc(var(--h6) * var(--scale));
+  --h4: calc(var(--h5) * var(--scale));
+  --h3: calc(var(--h4) * var(--scale));
+  --h2: calc(var(--h3) * var(--scale));
+  --h1: calc(var(--h2) * var(--scale));
+  --sans-serif: "Montserrat", sans-serif;
+  scroll-behavior: smooth;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 100%; /*16px*/
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+body {
+  /* background: var(--gradient) no-repeat fixed; */
+  font-weight: 400;
+  line-height: 1.6;
+  font-family: var(--sans-serif);
+  font-size: var(--base-size);
+  padding: 0;
+  margin: 0;
+}
+
+.overall-stat {
+  font-weight: bold;
+  font-size: 2rem;
+}
+.very-low {
+  color: var(--very-low-green);
+}
+
+.low {
+  color: var(--low-green);
+}
+
+.moderate {
+  color: var(--moderate-yellow);
+}
+
+.high {
+  color: var(--high-mustard);
+}
+
+.very-high {
+  color: var(--very-high-red);
+}
+
+.table-header {
+  text-align: center;
+}
+table {
+  min-width: 75%;
+  margin: 0 auto;
+}
+
+tr {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  text-align: justify;
+  justify-content: center;
+}
+
+td {
+  display: flex;
+  justify-content: flex-start;
+}
