@@ -2,16 +2,7 @@ import React from "react";
 import { getCurrentOverallIntensity } from "./api";
 import { useQuery } from "@tanstack/react-query";
 import calculateTotalAverage from "./utils/calculateTotalAverage";
-
-type CurrOverallIntensityData = {
-  from: string;
-  intensity: {
-    forecast: number;
-    actual: number;
-    index: string;
-  };
-  to: string;
-};
+import { CurrOverallIntensityData } from "./types";
 
 const App = () => {
   const currOverallIntensity = useQuery({
