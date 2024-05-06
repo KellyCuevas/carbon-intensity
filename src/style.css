@@ -70,3 +70,23 @@ body {
 .very-high {
   color: var(--very-high-red);
 }
+
+.table-header {
+  text-align: center;
+}
+table {
+  min-width: 75%;
+  margin: 0 auto;
+}
+
+tr {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  text-align: justify;
+  justify-content: center;
+}
+
+td {
+  display: flex;
+  justify-content: flex-start;
+}
