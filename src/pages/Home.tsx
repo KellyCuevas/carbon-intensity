@@ -3,7 +3,7 @@ import { getCurrentOverallIntensity } from "../api";
 import { useQuery } from "@tanstack/react-query";
 import calculateTotalAverage from "../utils/calculateTotalAverage";
 import { CurrOverallIntensityData } from "../types";
-import OverallTable from "../components/RegionTable";
+import RegionTable from "../components/RegionTable";
 
 const Home = () => {
   const currOverallIntensity = useQuery({
@@ -42,7 +42,7 @@ const Home = () => {
           "calculating..."
         )}
       </div>
-      <OverallTable />
+      <RegionTable />
     </>
   );
 };

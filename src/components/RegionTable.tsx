@@ -10,7 +10,7 @@ type RegionData = {
   };
   shortname: string;
 };
-const OverallTable = () => {
+const RegionTable = () => {
   const [sortAsc, setSortAsc] = useState(true);
   const regionalData = useQuery({
     queryKey: ["regionalData"],
@@ -58,4 +58,4 @@ const OverallTable = () => {
   );
 };
 
-export default OverallTable;
+export default RegionTable;
