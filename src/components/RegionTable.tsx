@@ -10,7 +10,11 @@ type RegionData = {
   };
   shortname: string;
 };
-const RegionTable = () => {
+const RegionTable = ({
+  handleRegionClick,
+}: {
+  handleRegionClick: React.MouseEventHandler;
+}) => {
   const [sortAsc, setSortAsc] = useState(true);
   const regionalData = useQuery({
     queryKey: ["regionalData"],
@@ -25,7 +29,15 @@ const RegionTable = () => {
     )
     .map((region: RegionData) => (
       <tr key={region.regionid}>
-        <th scope="row">{region.shortname}</th>
+        <th scope="row">
+          <button
+            onClick={handleRegionClick}
+            value={region.regionid}
+            tabIndex={0}
+          >
+            {region.shortname}
+          </button>
+        </th>
         <td className={region.intensity.index.replace(" ", "-")}>
           {region.intensity.forecast}
         </td>
