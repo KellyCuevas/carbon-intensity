@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 const path = require("path");
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 
@@ -39,6 +40,7 @@ module.exports = {
       },
     ],
   },
+  // eslint-disable-next-line no-dupe-keys
   resolve: { extensions: ["*", ".js", ".jsx", ".ts", ".tsx"] },
   plugins: [
     new HtmlWebPackPlugin({
