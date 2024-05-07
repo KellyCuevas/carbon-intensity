@@ -7,3 +7,11 @@ export type CurrOverallIntensityData = {
   };
   to: string;
 };
+export type RegionData = {
+  regionid: number;
+  intensity: {
+    forecast: number;
+    index: string;
+  };
+  shortname: string;
+};

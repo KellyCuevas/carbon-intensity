@@ -1,15 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { getCurrentRegionalIntensity } from "../api";
+import { RegionData } from "../types";
 
-type RegionData = {
-  regionid: number;
-  intensity: {
-    forecast: number;
-    index: string;
-  };
-  shortname: string;
-};
 const RegionTable = ({
   handleRegionClick,
 }: {
