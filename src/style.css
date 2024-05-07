@@ -54,9 +54,18 @@ body {
   width: 100vw;
 }
 
+h1 {
+  font-size: var(--h2);
+  text-align: center;
+}
 .overall-stat {
   font-weight: bold;
   font-size: 2rem;
+}
+
+.secondary-stat {
+  font-weight: bold;
+  font-size: 1.5rem;
 }
 .very-low {
   color: var(--very-low-green);
