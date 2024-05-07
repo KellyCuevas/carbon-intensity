@@ -9,3 +9,19 @@ export async function getCurrentRegionalIntensity() {
   const response = await axios.get("/regional");
   return response.data;
 }
+
+export async function getRegionDetail(regionId: string) {
+  const response = await axios.get(`/regional/regionid/${regionId}`);
+  return response.data;
+}
+
+export async function getRegionWeekData(
+  regionId: string,
+  from: string,
+  to: string
+) {
+  const response = await axios.get(
+    `/regional/intensity/${from}/${to}/regionid/${regionId}`
+  );
+  return response.data;
+}
