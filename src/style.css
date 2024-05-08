@@ -150,3 +150,25 @@ dialog {
     opacticy: 100%;
   }
 }
+
+.date-picker-container {
+  display: flex;
+  flex-direction: row;
+  width: 50%;
+  justify-content: center;
+  align-items: start;
+  margin: auto;
+  gap: 4rem;
+}
+.single-date-picker {
+  display: grid;
+  align-items: start;
+}
+
+.date-picker-label {
+  font-weight: 600;
+}
+
+.helper-text {
+  font-style: italic;
+}
