@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { getCurrentOverallIntensity } from "../api";
+import { getCurrentOverallIntensity } from "../services/api";
 import { useQuery } from "@tanstack/react-query";
 import calculateTotalAverage from "../utils/calculateTotalAverage";
 import { CurrOverallIntensityData } from "../types";
