@@ -6,6 +6,7 @@ import { RegionData, RegionIntensityDetail } from "../types";
 import DateSelect from "../components/DateSelect";
 import RegionDetailGraph from "../components/RegionDetailGraph";
 import RegionSelect from "../components/RegionSelect";
+import getDateForParams from "../utils/getDateForParams";
 
 const RegionDetail = () => {
   const { regionId = "" } = useParams();
@@ -22,17 +23,19 @@ const RegionDetail = () => {
     (region: RegionData) => region.regionid === Number(regionId)
   )[0];
 
-  console.log(currRegionData);
-  let customStartDateISO = startDate.toISOString();
-  customStartDateISO = `${customStartDateISO.slice(
-    0,
-    11
-  )}${customStartDateISO.slice(11, 16)}Z`;
-  let customEndDateISO = endDate.toISOString();
-  customEndDateISO = `${customEndDateISO.slice(0, 11)}${customEndDateISO.slice(
-    11,
-    16
-  )}Z`;
+  // console.log(currRegionData);
+  // let customStartDateISO = startDate.toISOString();
+  // customStartDateISO = `${customStartDateISO.slice(
+  //   0,
+  //   11
+  // )}${customStartDateISO.slice(11, 16)}Z`;
+  // let customEndDateISO = endDate.toISOString();
+  // customEndDateISO = `${customEndDateISO.slice(0, 11)}${customEndDateISO.slice(
+  //   11,
+  //   16
+  // )}Z`;
+  const customStartDateISO = getDateForParams(startDate);
+  const customEndDateISO = getDateForParams(endDate);
 
   const regionCustomRangeData = useQuery({
     queryKey: [

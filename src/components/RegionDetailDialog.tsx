@@ -3,6 +3,8 @@ import React, { useMemo } from "react";
 import { getRegionDetail, getRegionWeekData, getRegionMonthData } from "../api";
 import { Link } from "react-router-dom";
 import { RegionIntensityDetail } from "../types";
+import getCarbonIndexName from "../utils/getCarbonIndexName";
+import getDateForParams from "../utils/getDateForParams";
 
 const RegionDetailDialog = ({
   handleCloseModel,
@@ -20,32 +22,22 @@ const RegionDetailDialog = ({
 
   const { currDateISO, oneWeekPriorISO, oneMonthPriorISO } = useMemo(() => {
     const currDate = new Date();
-    let currDateISO = currDate.toISOString();
-    currDateISO = `${currDateISO.slice(0, 11)}${currDateISO.slice(11, 16)}Z`;
-
+    const currDateISO = getDateForParams(currDate);
     //for consistency, the function is pulling data from the last 7 days, regardless of the current day of the week (i.e. if it is Tuesday, it will get data from last Tues to this Tues)
     const oneWeekPrior = new Date(currDate.getTime() - 6 * 24 * 60 * 60 * 1000);
 
-    let oneWeekPriorISO = oneWeekPrior.toISOString();
-    oneWeekPriorISO = `${oneWeekPriorISO.slice(0, 11)}${oneWeekPriorISO.slice(
-      11,
-      16
-    )}Z`;
+    const oneWeekPriorISO = getDateForParams(oneWeekPrior);
 
     //for consistency, the function is pull data from the last 30 days, regardless of the current day of the month
     const oneMonthPrior = new Date(
       currDate.getTime() - 30 * 24 * 60 * 60 * 1000
     );
 
-    let oneMonthPriorISO = oneMonthPrior.toISOString();
-    oneMonthPriorISO = `${oneMonthPriorISO.slice(
-      0,
-      11
-    )}${oneMonthPriorISO.slice(11, 16)}Z`;
+    const oneMonthPriorISO = getDateForParams(oneMonthPrior);
     return { currDateISO, oneWeekPriorISO, oneMonthPriorISO };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [regionId]);
-  // console.log(currDateISO, oneWeekPriorISO, oneMonthPriorISO);
+
   const regionWeekData = useQuery({
     queryKey: ["region-week", regionId, oneWeekPriorISO, currDateISO],
     queryFn: () => getRegionWeekData(regionId, oneWeekPriorISO, currDateISO),
@@ -75,21 +67,8 @@ const RegionDetailDialog = ({
     monthSum / regionMonthData?.data?.data?.data.length
   );
 
-  const regionWeekIndex = calculateIndex(regionWeekAverage);
-  const regionMonthIndex = calculateIndex(regionMonthAverage);
-  // console.log("average", average);
-  //TODO: turn this into a function for reusability
-  function calculateIndex(averageIntensity: number) {
-    let index;
-    if (averageIntensity) {
-      if (averageIntensity < 35) index = "very-low";
-      if (averageIntensity >= 35 && averageIntensity < 110) index = "low";
-      if (averageIntensity >= 110 && averageIntensity < 190) index = "moderate";
-      if (averageIntensity >= 190 && averageIntensity < 270) index = "high";
-      if (averageIntensity >= 270) index = "very-high";
-    }
-    return index;
-  }
+  const regionWeekIndex = getCarbonIndexName(regionWeekAverage);
+  const regionMonthIndex = getCarbonIndexName(regionMonthAverage);
 
   return (
     <dialog className="side-panel-dialog">
