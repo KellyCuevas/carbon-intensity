@@ -9,7 +9,7 @@ import getCarbonIndexName from "../utils/getCarbonIndexName";
 
 const Home = () => {
   const [regionId, setRegionId] = useState("");
-  //TODO refactor using statistics endpoint
+  //TODO refactor using statistics endpoint?
   const currOverallIntensity = useQuery({
     queryKey: ["currOverallIntensity"],
     queryFn: getCurrentOverallIntensity,

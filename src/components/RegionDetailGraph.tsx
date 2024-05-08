@@ -3,12 +3,8 @@ import { RegionIntensityData } from "../types";
 
 const RegionDetailGraph = ({ data }: { data: RegionIntensityData }) => {
   console.log(data?.data?.length);
-  //every 48 items in the array is one day on the graph
-  //iterate over the intensity data array using a counter to keep track of the days
-  //while count <= array.length / 48 => if there are two days, there will be 96 items, and count will be 2
-  //const start = count * 48
-  //array.slice(start, start + 49).reduce((a, b) => (a.intensity + b.intensity) / 48)
-  //count++
+  //*every 48 items in the array is one day on the graph, so we need to slice the array into days and reduce each slice to calculate the daily average
+
   const days = [];
   const avgIntensity = [];
 
@@ -24,8 +20,6 @@ const RegionDetailGraph = ({ data }: { data: RegionIntensityData }) => {
     count++;
   }
 
-  // days = days.map((date: string) => date.slice(0, 10));
-  console.log("days", days, "avgIntensity", avgIntensity);
   return (
     <div className="graph-container">
       <div className="graph">
