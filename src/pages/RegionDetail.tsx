@@ -4,6 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 import { getCurrentRegionalIntensity, getRegionMonthData } from "../api";
 import { RegionData, RegionIntensityDetail } from "../types";
 import DateSelect from "../components/DateSelect";
+import RegionDetailGraph from "../components/RegionDetailGraph";
 
 const RegionDetail = () => {
   const { regionId = "" } = useParams();
@@ -41,7 +42,11 @@ const RegionDetail = () => {
     ],
     queryFn: () =>
       getRegionMonthData(regionId, customStartDateISO, customEndDateISO),
-    enabled: !!regionId && !!customStartDateISO && !!customEndDateISO,
+    enabled:
+      !!regionId &&
+      !!customStartDateISO &&
+      !!customEndDateISO &&
+      customStartDateISO !== customEndDateISO,
     staleTime: 30 * 1000,
   });
 
@@ -66,10 +71,12 @@ const RegionDetail = () => {
     }
     return index;
   }
-  console.log(regionCustomRangeData?.data);
+  console.log(regionCustomRangeData);
   return (
     <div>
-      <h1 className="h1">Region Detail for {currRegionData.shortname}</h1>
+      <h1 className="secondary-stat h1">
+        Region Detail for {currRegionData.shortname}
+      </h1>
       <DateSelect
         startDate={startDate}
         setStartDate={setStartDate}
@@ -89,6 +96,13 @@ const RegionDetail = () => {
           "calculating..."
         )}
       </h2>
+      <RegionDetailGraph
+        data={
+          regionCustomRangeData?.data?.data
+            ? regionCustomRangeData?.data?.data
+            : []
+        }
+      />
     </div>
   );
 };
