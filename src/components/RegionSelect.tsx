@@ -73,6 +73,10 @@ const RegionSelect = () => {
       id: 17,
       name: "Wales",
     },
+    {
+      id: 18,
+      name: "GB",
+    },
   ];
 
   const handleRegionChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
