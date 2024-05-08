@@ -2,12 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import React, { useMemo } from "react";
 import { getRegionDetail, getRegionWeekData, getRegionMonthData } from "../api";
 import { Link } from "react-router-dom";
-
-type RegionIntensityDetail = {
-  intensity: {
-    forecast: number;
-  };
-};
+import { RegionIntensityDetail } from "../types";
 
 const RegionDetailDialog = ({
   handleCloseModel,
@@ -20,6 +15,7 @@ const RegionDetailDialog = ({
     queryKey: ["region", regionId],
     queryFn: () => getRegionDetail(regionId),
     enabled: !!regionId,
+    staleTime: 30 * 1000,
   });
 
   const { currDateISO, oneWeekPriorISO, oneMonthPriorISO } = useMemo(() => {
@@ -51,12 +47,14 @@ const RegionDetailDialog = ({
     queryKey: ["region-week", regionId, oneWeekPriorISO, currDateISO],
     queryFn: () => getRegionWeekData(regionId, oneWeekPriorISO, currDateISO),
     enabled: !!regionId && !!oneWeekPriorISO && !!currDateISO,
+    staleTime: 30 * 1000,
   });
 
   const regionMonthData = useQuery({
     queryKey: ["region-month", regionId, oneMonthPriorISO, currDateISO],
     queryFn: () => getRegionMonthData(regionId, oneMonthPriorISO, currDateISO),
     enabled: !!regionId && !!oneMonthPriorISO && !!currDateISO,
+    staleTime: 30 * 1000,
   });
 
   // console.log("regionWeekData", regionWeekData);
