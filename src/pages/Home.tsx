@@ -5,6 +5,7 @@ import calculateTotalAverage from "../utils/calculateTotalAverage";
 import { CurrOverallIntensityData } from "../types";
 import RegionTable from "../components/RegionTable";
 import RegionDetailDialog from "../components/RegionDetailDialog";
+import getCarbonIndexName from "../utils/getCarbonIndexName";
 
 const Home = () => {
   const [regionId, setRegionId] = useState("");
@@ -19,23 +20,15 @@ const Home = () => {
       (segment: CurrOverallIntensityData) => segment.intensity.actual !== null
     )
   );
-  console.log(total);
-  let index = "";
 
-  if (total) {
-    if (total < 35) index = "very-low";
-    if (total >= 35 && total < 110) index = "low";
-    if (total >= 110 && total < 190) index = "moderate";
-    if (total >= 190 && total < 270) index = "high";
-    if (total >= 270) index = "very-high";
-  }
+  const index = getCarbonIndexName(total);
 
   const dialog = document.querySelector("dialog");
+
   const handleRegionClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     dialog?.showModal();
     setRegionId(e.currentTarget.value);
-    console.log(e.currentTarget.value);
   };
 
   const handleCloseModel = (e: React.MouseEvent<HTMLButtonElement>) => {
