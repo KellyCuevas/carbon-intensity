@@ -5,6 +5,7 @@ import { getCurrentRegionalIntensity, getRegionMonthData } from "../api";
 import { RegionData, RegionIntensityDetail } from "../types";
 import DateSelect from "../components/DateSelect";
 import RegionDetailGraph from "../components/RegionDetailGraph";
+import RegionSelect from "../components/RegionSelect";
 
 const RegionDetail = () => {
   const { regionId = "" } = useParams();
@@ -71,39 +72,43 @@ const RegionDetail = () => {
     }
     return index;
   }
-  console.log(regionCustomRangeData);
+  // console.log(regionCustomRangeData);
+
   return (
-    <div>
-      <h1 className="secondary-stat h1">
-        Region Detail for {currRegionData.shortname}
-      </h1>
-      <DateSelect
-        startDate={startDate}
-        setStartDate={setStartDate}
-        endDate={endDate}
-        setEndDate={setEndDate}
-      />
-      <h2>
-        The Averge Carbon Intensity from {startDate.toDateString()} to{" "}
-        {endDate.toDateString()} is: <br />
-        {regionCustomRangeAverage ? (
-          <span className={`secondary-stat ${customRangeIndex}`}>
-            {regionCustomRangeAverage}
-            <br />
-            {customRangeIndex?.replace("-", " ").toUpperCase()}
-          </span>
-        ) : (
-          "calculating..."
-        )}
-      </h2>
-      <RegionDetailGraph
-        data={
-          regionCustomRangeData?.data?.data
-            ? regionCustomRangeData?.data?.data
-            : []
-        }
-      />
-    </div>
+    <>
+      <div>
+        <h1 className="secondary-stat h1">
+          Region Detail for {currRegionData.shortname}
+        </h1>
+        <DateSelect
+          startDate={startDate}
+          setStartDate={setStartDate}
+          endDate={endDate}
+          setEndDate={setEndDate}
+        />
+        <h2>
+          The Averge Carbon Intensity from {startDate.toDateString()} to{" "}
+          {endDate.toDateString()} is: <br />
+          {regionCustomRangeAverage ? (
+            <span className={`secondary-stat ${customRangeIndex}`}>
+              {regionCustomRangeAverage}
+              <br />
+              {customRangeIndex?.replace("-", " ").toUpperCase()}
+            </span>
+          ) : (
+            "calculating..."
+          )}
+        </h2>
+        <RegionDetailGraph
+          data={
+            regionCustomRangeData?.data?.data
+              ? regionCustomRangeData?.data?.data
+              : []
+          }
+        />
+        <RegionSelect />
+      </div>
+    </>
   );
 };
 
