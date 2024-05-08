@@ -9,7 +9,7 @@ const RegionDetailGraph = ({ data }: { data: RegionIntensityData }) => {
   //const start = count * 48
   //array.slice(start, start + 49).reduce((a, b) => (a.intensity + b.intensity) / 48)
   //count++
-  let days = [];
+  const days = [];
   const avgIntensity = [];
 
   let count = 0;
@@ -24,26 +24,28 @@ const RegionDetailGraph = ({ data }: { data: RegionIntensityData }) => {
     count++;
   }
 
-  days = days.map((date: string) => date.slice(0, 10));
+  // days = days.map((date: string) => date.slice(0, 10));
   console.log("days", days, "avgIntensity", avgIntensity);
   return (
     <div className="graph-container">
-      <Plot
-        data={[
-          {
-            x: days,
-            y: avgIntensity,
-            type: "scatter",
-            mode: "lines+markers",
-            marker: { color: "green" },
-          },
-        ]}
-        layout={{
-          width: 500,
-          height: 400,
-          title: "Daily Average Carbon Intensity",
-        }}
-      />
+      <div className="graph">
+        <Plot
+          data={[
+            {
+              x: days,
+              y: avgIntensity,
+              type: "scatter",
+              mode: "lines+markers",
+              marker: { color: "green" },
+            },
+          ]}
+          layout={{
+            width: 500,
+            height: 400,
+            title: "Daily Average Carbon Intensity",
+          }}
+        />
+      </div>
     </div>
   );
 };
