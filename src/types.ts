@@ -17,7 +17,15 @@ export type RegionData = {
 };
 
 export type RegionIntensityDetail = {
+  from: string;
+  to: string;
   intensity: {
     forecast: number;
   };
+};
+
+export type RegionIntensityData = {
+  regionid: number;
+  shortname: string;
+  data: RegionIntensityDetail[];
 };
