@@ -1,6 +1,10 @@
 import { useQuery } from "@tanstack/react-query";
 import React, { useMemo } from "react";
-import { getRegionDetail, getRegionWeekData, getRegionMonthData } from "../api";
+import {
+  getRegionDetail,
+  getRegionWeekData,
+  getRegionMonthData,
+} from "../services/api";
 import { Link } from "react-router-dom";
 import { RegionIntensityDetail } from "../types";
 import getCarbonIndexName from "../utils/getCarbonIndexName";

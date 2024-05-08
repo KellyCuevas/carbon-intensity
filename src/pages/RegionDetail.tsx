@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
-import { getCurrentRegionalIntensity, getRegionMonthData } from "../api";
+import {
+  getCurrentRegionalIntensity,
+  getRegionMonthData,
+} from "../services/api";
 import { RegionData, RegionIntensityDetail } from "../types";
 import DateSelect from "../components/DateSelect";
 import RegionDetailGraph from "../components/RegionDetailGraph";
@@ -23,17 +26,6 @@ const RegionDetail = () => {
     (region: RegionData) => region.regionid === Number(regionId)
   )[0];
 
-  // console.log(currRegionData);
-  // let customStartDateISO = startDate.toISOString();
-  // customStartDateISO = `${customStartDateISO.slice(
-  //   0,
-  //   11
-  // )}${customStartDateISO.slice(11, 16)}Z`;
-  // let customEndDateISO = endDate.toISOString();
-  // customEndDateISO = `${customEndDateISO.slice(0, 11)}${customEndDateISO.slice(
-  //   11,
-  //   16
-  // )}Z`;
   const customStartDateISO = getDateForParams(startDate);
   const customEndDateISO = getDateForParams(endDate);
 
@@ -81,7 +73,7 @@ const RegionDetail = () => {
     <>
       <div>
         <h1 className="secondary-stat h1">
-          Region Detail for {currRegionData.shortname}
+          Region Detail for {currRegionData?.shortname}
         </h1>
         <DateSelect
           startDate={startDate}

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
-import { getCurrentRegionalIntensity } from "../api";
+import { getCurrentRegionalIntensity } from "../services/api";
 import { RegionData } from "../types";
 
 const RegionTable = ({
