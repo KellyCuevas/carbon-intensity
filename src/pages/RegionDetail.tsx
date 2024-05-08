@@ -10,6 +10,7 @@ import DateSelect from "../components/DateSelect";
 import RegionDetailGraph from "../components/RegionDetailGraph";
 import RegionSelect from "../components/RegionSelect";
 import getDateForParams from "../utils/getDateForParams";
+import getCarbonIndexName from "../utils/getCarbonIndexName";
 
 const RegionDetail = () => {
   const { regionId = "" } = useParams();
@@ -54,20 +55,7 @@ const RegionDetail = () => {
     customSum / regionCustomRangeData?.data?.data?.data.length
   );
 
-  const customRangeIndex = calculateIndex(regionCustomRangeAverage);
-
-  function calculateIndex(averageIntensity: number) {
-    let index;
-    if (averageIntensity) {
-      if (averageIntensity < 35) index = "very-low";
-      if (averageIntensity >= 35 && averageIntensity < 110) index = "low";
-      if (averageIntensity >= 110 && averageIntensity < 190) index = "moderate";
-      if (averageIntensity >= 190 && averageIntensity < 270) index = "high";
-      if (averageIntensity >= 270) index = "very-high";
-    }
-    return index;
-  }
-  // console.log(regionCustomRangeData);
+  const customRangeIndex = getCarbonIndexName(regionCustomRangeAverage);
 
   return (
     <>
