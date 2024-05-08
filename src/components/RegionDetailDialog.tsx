@@ -95,8 +95,8 @@ const RegionDetailDialog = ({
       <button type="button" onClick={(e) => handleCloseModel(e)}>
         X
       </button>
-      <h1>{regionData?.data?.data[0].shortname}</h1>
-      <h2>
+      <h2>{regionData?.data?.data[0].shortname}</h2>
+      <h3 className="secondary-stat">
         The current carbon intensity is: <br />
         <span
           className={`overall-stat ${regionData?.data?.data[0].data[0].intensity.index.replace(
@@ -110,7 +110,7 @@ const RegionDetailDialog = ({
             regionData?.data?.data[0].data[0].intensity.index.toUpperCase() as string
           }
         </span>
-      </h2>
+      </h3>
       <h3>
         The carbon intensity in {regionData?.data?.data[0].shortname} over the
         past week was:

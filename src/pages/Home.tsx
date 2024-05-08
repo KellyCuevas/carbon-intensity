@@ -60,17 +60,20 @@ const Home = () => {
     <>
       <h1>Carbon Intensity</h1>
       <div>
-        <h3>The Current Average Overall Carbon Intensity Today Is:</h3>
-        {currOverallIntensity.isLoading && "Calculating..."}
-        {total === 0 ? (
-          "Sorry - data is not currently available"
-        ) : (
-          <span className={`overall-stat ${index}`}>
-            {total}
-            <br />
-            {index.toUpperCase()}
-          </span>
-        )}
+        <h3 className="overall-stat">
+          The Current Average Overall Carbon Intensity Today Is:
+          <br />
+          {currOverallIntensity.isLoading && "Calculating..."}
+          {total === 0 ? (
+            "Sorry - data is not currently available"
+          ) : (
+            <span className={`overall-stat ${index}`}>
+              {total}
+              <br />
+              {index.toUpperCase()}
+            </span>
+          )}{" "}
+        </h3>
       </div>
       <RegionTable handleRegionClick={handleRegionClick} />
       <RegionDetailDialog
