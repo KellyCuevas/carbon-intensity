@@ -7,6 +7,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, "build"),
     filename: "bundle.js",
+    publicPath: "/",
   },
   resolve: {
     modules: [path.join(__dirname, "src"), "node_modules"],
@@ -16,6 +17,12 @@ module.exports = {
   },
   devServer: {
     historyApiFallback: true,
+    hot: true,
+    static: {
+      directory: path.join(__dirname, "build"),
+      publicPath: "/",
+    },
+    port: 8080,
   },
   module: {
     rules: [
