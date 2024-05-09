@@ -75,7 +75,7 @@ h3 {
 
 .secondary-stat {
   font-weight: bold;
-  font-size: 1.5rem;
+  font-size: var(--h6);
   text-align: center;
   color: #1e3250;
 }
@@ -122,7 +122,8 @@ table {
 
 tr {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 1rem;
   text-align: left;
   justify-content: center;
 }
@@ -133,7 +134,7 @@ td {
 }
 
 thead tr {
-  border-bottom: 1px solid gray;
+  border-bottom: 1px solid slategray;
 }
 thead th button {
   margin-right: 1rem;
@@ -145,6 +146,7 @@ tbody th button {
   font: inherit;
   color: inherit;
   background: none;
+  text-align: left;
 }
 
 tbody th button:hover {
@@ -315,4 +317,40 @@ dialog {
 .loading {
   font-weight: 600;
   text-align: center;
+}
+
+@media (max-width: 750px) {
+  .overall-stat {
+    font-size: var(--h5);
+    text-align: center;
+    margin-top: 0.5rem;
+  }
+
+  dialog {
+    position: fixed;
+    height: 100vh;
+    margin-bottom: 0;
+    margin-top: 0;
+    margin-right: 0;
+    width: 100%;
+  }
+
+  .date-picker-container {
+    display: grid;
+    flex-direction: column;
+    width: 50%;
+    justify-content: center;
+    align-items: start;
+    margin: auto;
+    gap: 1rem;
+  }
+  thead tr {
+    align-items: end;
+    justify-content: center;
+    gap: 1rem;
+  }
+
+  tbody tr {
+    border-bottom: 0.5px solid slategray;
+  }
 }

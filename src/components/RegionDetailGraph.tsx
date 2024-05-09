@@ -34,10 +34,11 @@ const RegionDetailGraph = ({ data }: { data: RegionIntensityData }) => {
             },
           ]}
           layout={{
-            width: 500,
+            width: 475,
             height: 400,
             title: "Daily Average Carbon Intensity",
           }}
+          config={{ responsive: true }}
         />
       </div>
     </div>

@@ -62,9 +62,7 @@ const RegionDetail = () => {
   return (
     <>
       <div>
-        <h1 className="secondary-stat h1">
-          Region Detail for {currRegionData?.shortname}
-        </h1>
+        <h1 className="h1">Region Detail for {currRegionData?.shortname}</h1>
         <DateSelect
           startDate={startDate}
           setStartDate={setStartDate}
