@@ -13,8 +13,9 @@
     "moduleResolution": "Node",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "outDir": "$$ts-jest$$",
+    "outDir": "./build/",
     // "noEmit": true,
     "jsx": "react-jsx"
-  }
+  },
+  "include": ["src/**/*"]
 }

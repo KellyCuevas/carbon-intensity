@@ -1,6 +1,6 @@
 {
   "name": "carbon-intensity",
-  "homepage": "https://kellycuevas.github.io/carbon-intensity/",
+  "homepage": "https://kellycuevas.github.io/carbon-intensity",
   "version": "1.0.0",
   "private": true,
   "main": "index.js",

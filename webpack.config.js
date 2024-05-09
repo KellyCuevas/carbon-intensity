@@ -4,6 +4,7 @@ const HtmlWebPackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
+  entry: "./src/index.tsx",
   output: {
     path: path.resolve(__dirname, "build"),
     filename: "bundle.js",
@@ -52,7 +53,7 @@ module.exports = {
     ],
   },
   // eslint-disable-next-line no-dupe-keys
-  resolve: { extensions: ["*", ".js", ".jsx", ".ts", ".tsx"] },
+  resolve: { extensions: [".*", ".js", ".jsx", ".ts", ".tsx"] },
   plugins: [
     new HtmlWebPackPlugin({
       template: "./src/index.html",
