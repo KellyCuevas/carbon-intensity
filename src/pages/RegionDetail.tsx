@@ -69,7 +69,7 @@ const RegionDetail = () => {
           endDate={endDate}
           setEndDate={setEndDate}
         />
-        <h2>
+        <h2 className="secondary-stat">
           The Averge Carbon Intensity from {startDate.toDateString()} to{" "}
           {endDate.toDateString()} is: <br />
           {regionCustomRangeAverage ? (

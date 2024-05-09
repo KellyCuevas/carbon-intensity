@@ -22,7 +22,7 @@ const NationalCurrAvg = () => {
 
   return (
     <div>
-      <h3 className="overall-stat">
+      <h2 className="overall-stat">
         The Current Average Overall Carbon Intensity Today Is:
         <br />
         {currDayStats.isPending && (
@@ -39,7 +39,7 @@ const NationalCurrAvg = () => {
             {index?.toUpperCase()}
           </span>
         )}{" "}
-      </h3>
+      </h2>
     </div>
   );
 };

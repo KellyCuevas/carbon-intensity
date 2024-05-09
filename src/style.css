@@ -7,8 +7,7 @@
   --white: #ffffff;
   --base-size: 1rem;
   --scale: 1.25;
-  --h6: calc(var(--base-size) * var(--scale));
-  --h5: calc(var(--h6) * var(--scale));
+  --h5: calc(var(--base-size) * var(--scale));
   --h4: calc(var(--h5) * var(--scale));
   --h3: calc(var(--h4) * var(--scale));
   --h2: calc(var(--h3) * var(--scale));
@@ -43,19 +42,29 @@ body {
 }
 
 h1 {
-  font-size: var(--h2);
+  font-size: var(--h1);
   text-align: center;
   margin-bottom: 0.5rem;
   color: #1e3250;
 }
 h2 {
+  font-size: var(--h2);
   text-align: center;
   color: #1e3250;
 }
 
 h3 {
+  font-size: var(--h3);
   text-align: center;
   color: #1e3250;
+}
+
+h4 {
+  font-size: var(--h4);
+}
+
+h5 {
+  font-size: var(--h5);
 }
 
 .wrapper {
@@ -65,9 +74,21 @@ h3 {
 .main-wrapper {
   min-height: 85vh;
 }
+
+dialog .overall-stat {
+  font-size: var(--h4);
+  margin-top: 0.5rem;
+  margin-bottom: 0;
+}
+
+dialog .secondary-stat {
+  font-size: var(--h5);
+  margin-top: 0.5rem;
+  margin-bottom: 0;
+}
 .overall-stat {
   font-weight: bold;
-  font-size: var(--h4);
+  font-size: var(--h3);
   text-align: center;
   margin-top: 1.5rem;
   color: #1e3250;
@@ -75,7 +96,7 @@ h3 {
 
 .secondary-stat {
   font-weight: bold;
-  font-size: var(--h6);
+  font-size: var(--h4);
   text-align: center;
   color: #1e3250;
 }
@@ -107,6 +128,7 @@ h3 {
 .table-header {
   text-align: center;
   color: #1e3250;
+  font-weight: 500;
 }
 table {
   min-width: 75%;
@@ -194,6 +216,20 @@ dialog {
   }
 }
 
+.dialog-close {
+  border: none;
+  color: var(--white);
+  background-color: #3a5e98;
+  border-radius: 5px;
+  padding: 0.25rem 0.5rem;
+  align-self: start;
+  width: 40px;
+}
+
+.dialog-close:hover {
+  background-color: #507197;
+}
+
 .button-link {
   text-decoration: none;
   color: var(--dark);
@@ -207,6 +243,7 @@ dialog {
   display: block;
   max-width: 50%;
   margin-top: 1rem;
+  margin-bottom: 1rem;
 }
 
 .button-link:hover {
@@ -234,6 +271,7 @@ dialog {
 .date-picker-label {
   font-weight: 600;
   margin-bottom: 0;
+  padding-left: 4px;
 }
 
 .helper-text {
@@ -267,8 +305,9 @@ dialog {
   font-weight: 600;
 }
 .region-selector label {
-  font-size: 1.25rem;
-  text-align: center;
+  font-size: 1rem;
+  text-align: left;
+  padding-left: 4px;
 }
 .region-selector select {
   font-size: 1rem;
@@ -300,14 +339,16 @@ dialog {
 
 .dialog-content-container {
   height: 100%;
-  position: relative;
+  /* position: relative; */
+  display: grid;
+  gap: 0;
 }
-.dialog-footer {
+/* .dialog-footer {
   position: absolute;
   bottom: 0;
   right: 0;
   left: 0;
-}
+} */
 
 .error-message {
   color: var(--red);
@@ -322,9 +363,14 @@ dialog {
 
 @media (max-width: 750px) {
   .overall-stat {
-    font-size: var(--h5);
+    font-size: var(--h4);
     text-align: center;
     margin-top: 0.5rem;
+  }
+
+  .secondary-stat {
+    font-size: var(--h5);
+    text-align: center;
   }
 
   dialog {

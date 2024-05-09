@@ -78,7 +78,7 @@ const RegionDetailDialog = ({
     <dialog className="side-panel-dialog">
       <div className="dialog-content-container">
         <button
-          className="sort-button"
+          className="dialog-close"
           type="button"
           onClick={(e) => handleCloseModel(e)}
         >
@@ -86,9 +86,9 @@ const RegionDetailDialog = ({
         </button>
         <h2>{regionData?.data?.data[0].shortname}</h2>
         <h3 className="secondary-stat">
-          The current carbon intensity is: <br />
+          Current Carbon Intensity <br />
           <span
-            className={`overall-stat ${regionData?.data?.data[0].data[0].intensity.index.replace(
+            className={`secondary-stat ${regionData?.data?.data[0].data[0].intensity.index.replace(
               " ",
               "-"
             )}`}
@@ -100,9 +100,8 @@ const RegionDetailDialog = ({
             }
           </span>
         </h3>
-        <h3>
-          The carbon intensity in {regionData?.data?.data[0].shortname} over the
-          past week was:
+        <h4 className="secondary-stat">
+          Past Week Average:
           <br />
           {regionWeekAverage ? (
             <span className={`secondary-stat ${regionWeekIndex}`}>
@@ -113,10 +112,9 @@ const RegionDetailDialog = ({
           ) : (
             "calculating..."
           )}
-        </h3>
-        <h3>
-          The carbon intensity in {regionData?.data?.data[0].shortname} over the
-          past month was:
+        </h4>
+        <h4 className="secondary-stat">
+          Past Month Average:
           <br />
           {regionMonthAverage ? (
             <span className={`secondary-stat ${regionMonthIndex}`}>
@@ -127,7 +125,7 @@ const RegionDetailDialog = ({
           ) : (
             "calculating..."
           )}
-        </h3>
+        </h4>
         <footer className="dialog-footer">
           <Link to={`/detail/${regionId}`} className="button-link">
             Go To Detail Page
