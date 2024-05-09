@@ -4,9 +4,12 @@ import Home from "./pages/Home";
 import RegionDetail from "./pages/RegionDetail";
 import MainLayout from "./layouts/MainLayout";
 
+const environment = process.env.NODE_ENV;
 const App = () => {
   return (
-    <BrowserRouter basename="/carbon-intensity">
+    <BrowserRouter
+      basename={environment === "production" ? "/carbon-intensity" : ""}
+    >
       <Routes>
         <Route element={<MainLayout />}>
           <Route path="/" element={<Home />} />
