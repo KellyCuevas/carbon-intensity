@@ -1,9 +1,12 @@
 {
-  "name": "carbon-intensity-app",
+  "name": "carbon-intensity",
+  "homepage": "https://kellycuevas.github.io/carbon-intensity/",
   "version": "1.0.0",
   "private": true,
   "main": "index.js",
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "webpack-dev-server --mode=development --open --hot",
     "build": "webpack --mode=production",
     "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx}\"",
@@ -45,6 +48,7 @@
     "eslint-plugin-jsx-a11y": "^6.8.0",
     "eslint-plugin-react": "^7.34.1",
     "eslint-plugin-react-hooks": "^4.6.2",
+    "gh-pages": "^6.1.1",
     "html-webpack-plugin": "^5.6.0",
     "mini-css-extract-plugin": "^2.9.0",
     "prettier": "^2.8.4",

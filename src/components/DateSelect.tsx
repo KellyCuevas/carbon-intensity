@@ -70,6 +70,7 @@ const DateSelect = ({
             onChange={(date) => setStartDate(date ? date : startDate)}
             //prevent user from selecting date more than 2 days in the future per API requirements
             maxDate={maxStart}
+            className="date-picker"
           />
         </div>
         <div className="single-date-picker">
@@ -83,6 +84,7 @@ const DateSelect = ({
             minDate={minEndDate}
             //max date is no more than 60 days after the start date, but no more than 2 days from today
             maxDate={maxEndDate}
+            className="date-picker"
           />
         </div>
       </div>
