@@ -14,33 +14,44 @@ const RegionTable = ({
     queryFn: getCurrentRegionalIntensity,
   });
 
-  const tableData = regionalData?.data?.data[0].regions
-    .sort((a: RegionData, b: RegionData) =>
-      sortAsc
-        ? a.intensity.forecast - b.intensity.forecast
-        : b.intensity.forecast - a.intensity.forecast
-    )
-    .map((region: RegionData) => (
-      <tr key={region.regionid}>
-        <th scope="row">
-          <button
-            onClick={handleRegionClick}
-            value={region.regionid}
-            tabIndex={0}
-          >
-            {region.shortname}
-          </button>
-        </th>
-        <td className={region.intensity.index.replace(" ", "-")}>
-          {region.intensity.forecast}
-        </td>
-        <td className={region.intensity.index.replace(" ", "-")}>
-          {region.intensity.index}
-        </td>
-      </tr>
-    ));
+  let tableData;
+  console.log(regionalData);
+  //this API sometimes returns a status 200 with an error message in the response, so standard error handling has to be amended
+  if (regionalData.isSuccess && regionalData?.data?.data !== undefined) {
+    tableData = regionalData?.data?.data[0].regions
+      .sort((a: RegionData, b: RegionData) =>
+        sortAsc
+          ? a.intensity.forecast - b.intensity.forecast
+          : b.intensity.forecast - a.intensity.forecast
+      )
+      .map((region: RegionData) => (
+        <tr key={region.regionid}>
+          <th scope="row">
+            <button
+              onClick={handleRegionClick}
+              value={region.regionid}
+              tabIndex={0}
+            >
+              {region.shortname}
+            </button>
+          </th>
+          <td className={region.intensity.index.replace(" ", "-")}>
+            {region.intensity.forecast}
+          </td>
+          <td className={region.intensity.index.replace(" ", "-")}>
+            {region.intensity.index}
+          </td>
+        </tr>
+      ));
+  }
 
-  console.log(regionalData?.data?.data[0].regions);
+  //  console.log(regionalData?.data?.data[0].regions);
+
+  if (regionalData.isPending) return <p>Loading...</p>;
+
+  if ("error" in regionalData.data)
+    return <p className={"error-message"}>😕 Something went wrong 😕</p>;
+
   return (
     <div>
       <h2 className="table-header">Carbon Intensity By Region</h2>

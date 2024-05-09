@@ -23,10 +23,12 @@ const RegionDetail = () => {
     staleTime: 30 * 1000,
   });
 
-  const currRegionData = regionalData?.data?.data[0].regions.filter(
-    (region: RegionData) => region.regionid === Number(regionId)
-  )[0];
-
+  let currRegionData;
+  if (regionalData.isSuccess && regionalData?.data?.data !== undefined) {
+    currRegionData = regionalData?.data?.data[0].regions.filter(
+      (region: RegionData) => region.regionid === Number(regionId)
+    )[0];
+  }
   const customStartDateISO = getDateForParams(startDate);
   const customEndDateISO = getDateForParams(endDate);
 
