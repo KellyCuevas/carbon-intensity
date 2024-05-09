@@ -47,7 +47,7 @@ const RegionTable = ({
 
   //  console.log(regionalData?.data?.data[0].regions);
 
-  if (regionalData.isPending) return <p>Loading...</p>;
+  if (regionalData.isPending) return <p className="loading">Loading...</p>;
 
   if ("error" in regionalData.data)
     return <p className={"error-message"}>😕 Something went wrong 😕</p>;
@@ -60,8 +60,12 @@ const RegionTable = ({
           <tr>
             <th scope="col">Region</th>
             <th scope="col">
-              <button type="button" onClick={() => setSortAsc(!sortAsc)}>
-                {sortAsc ? <span>&#9662;</span> : <span>&#9652;</span>}
+              <button
+                className="sort-button"
+                type="button"
+                onClick={() => setSortAsc(!sortAsc)}
+              >
+                {sortAsc ? <span>&#9650;</span> : <span>&#9660;</span>}
               </button>
               Forecast Carbon Intensity &#40;gCO<sub>2</sub>/kWh&#41;
             </th>

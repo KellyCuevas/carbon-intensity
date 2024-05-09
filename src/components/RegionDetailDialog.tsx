@@ -77,7 +77,11 @@ const RegionDetailDialog = ({
   return (
     <dialog className="side-panel-dialog">
       <div className="dialog-content-container">
-        <button type="button" onClick={(e) => handleCloseModel(e)}>
+        <button
+          className="sort-button"
+          type="button"
+          onClick={(e) => handleCloseModel(e)}
+        >
           X
         </button>
         <h2>{regionData?.data?.data[0].shortname}</h2>

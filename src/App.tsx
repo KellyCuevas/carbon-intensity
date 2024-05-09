@@ -6,7 +6,7 @@ import MainLayout from "./layouts/MainLayout";
 
 const App = () => {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/carbon-intensity">
       <Routes>
         <Route element={<MainLayout />}>
           <Route path="/" element={<Home />} />

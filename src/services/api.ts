@@ -5,6 +5,11 @@ export async function getCurrentOverallIntensity() {
   return response.data;
 }
 
+export async function getCurrentDayStats(from: string, to: string) {
+  const response = await axios.get(`/intensity/stats/${from}/${to}`);
+  return response.data;
+}
+
 export async function getCurrentRegionalIntensity() {
   const response = await axios.get("/regional");
   return response.data;
