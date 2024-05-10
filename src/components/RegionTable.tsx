@@ -15,7 +15,7 @@ const RegionTable = ({
   });
 
   let tableData;
-  console.log(regionalData);
+  // console.log(regionalData);
   //this API sometimes returns a status 200 with an error message in the response, so standard error handling has to be amended
   if (regionalData.isSuccess && regionalData?.data?.data !== undefined) {
     tableData = regionalData?.data?.data[0].regions

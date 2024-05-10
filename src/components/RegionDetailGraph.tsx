@@ -2,7 +2,7 @@ import Plot from "react-plotly.js";
 import { RegionIntensityData } from "../types";
 
 const RegionDetailGraph = ({ data }: { data: RegionIntensityData }) => {
-  console.log(data?.data?.length);
+  // console.log(data?.data?.length);
   //*every 48 items in the array is one day on the graph, so we need to slice the array into days and reduce each slice to calculate the daily average
 
   const days = [];

@@ -6,19 +6,23 @@ import NationalCurrAvg from "../components/NationalCurrAvg";
 const Home = () => {
   const [regionId, setRegionId] = useState("");
 
-  const dialog = document.querySelector("dialog");
-
   const handleRegionClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    dialog?.showModal();
+    const dialog = document.querySelector("dialog");
     setRegionId(e.currentTarget.value);
+    console.log(dialog);
+    dialog?.showModal();
+
+    // console.log(e.currentTarget.value);
   };
 
   const handleCloseModel = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
+    const dialog = document.querySelector("dialog");
     dialog?.close();
   };
 
+  const dialog = document.querySelector("dialog");
   dialog?.addEventListener("click", (e) => {
     const dialogDimensions = dialog.getBoundingClientRect();
     if (
