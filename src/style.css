@@ -400,4 +400,8 @@ dialog {
   tbody tr {
     border-bottom: 0.5px solid slategray;
   }
+
+  .button-link {
+    max-width: 80%;
+  }
 }
